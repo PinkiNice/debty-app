@@ -1,0 +1,8 @@
+.loans-list {
+  display: flex;
+
+  & > * {
+    flex-basis: 50%;
+  }
+  
+}

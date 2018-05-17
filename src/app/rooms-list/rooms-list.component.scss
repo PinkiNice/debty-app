@@ -1,0 +1,16 @@
+.rooms-list {
+  outline: 1px solid black;
+  & li {
+    display: block;
+    background-color: gray;
+    padding: 0.25em;
+    margin: 0.15em;
+    &:hover {
+      background-color: lighten(gray, 10);
+    }
+  }
+
+  .room__active {
+    color: red;
+  }
+}

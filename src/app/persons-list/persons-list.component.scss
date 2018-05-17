@@ -1,0 +1,16 @@
+.persons-list {
+  border: 1px solid black;
+  display: flex;
+  ul {
+    display: flex;
+    list-style-type: none;
+  }
+  li {
+    display: inline-block;
+    margin: 0.5em;
+    background: red;
+  }
+  &__list {
+
+  }
+}

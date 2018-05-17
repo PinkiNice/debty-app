@@ -1,0 +1,11 @@
+<div class="person-form">
+
+  <form (submit)="addNewPerson($event)">
+    <input class="person-form" [(ngModel)]="newPersonName" required name="person-name" placeholder="Name" type="text" #personName>
+
+    <div *ngIf="!nameUnique || personName.pristine" class="person-form__error-unique">
+      Person name should be unique
+    </div>
+  </form>
+
+</div>

@@ -1,0 +1,13 @@
+<div class="rooms-list">
+  <ul>
+    <li *ngFor="let room of rooms" (click)="onRoomClick(room)" [ngClass]="{'room__active': room == activeRoom}" >
+      {{ room.name }}
+    </li>
+  </ul>
+  <div class="rooms-list__form">
+    <form #newRoomForm="ngForm" (ngSubmit)="addRoom(newRoomForm.value.roomName); newRoomForm.reset()">
+      <input type="text" required placeholder="New room" name="roomName" [(ngModel)]="newRoomName" #roomName="ngModel">
+      <button [disabled]="!newRoomForm.valid" type="submit">+</button>
+    </form>
+  </div>
+</div>
