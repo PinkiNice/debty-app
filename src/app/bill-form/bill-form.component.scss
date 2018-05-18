@@ -1,0 +1,17 @@
+.bill-form {
+  &__persons {
+    display: flex;
+  }
+}
+
+.person-checkbox {
+  display: flex;
+  padding: 0.25em;
+
+  input[type="checkbox"] {
+    display: none;
+    &:checked + p {
+      background-color: blue;
+    }
+  }
+}

@@ -1,5 +1,17 @@
 <div class="bill-form">
   <div class="bills-list__add">
-    <input type="text">
+    <form>
+      <input type="text" name="billDescription" placeholder="what you payed for?">
+      <input type="number" name="billTotal" placeholder="total">
+      <div class="bill-form__persons">
+        <label class="person-checkbox" 
+          *ngFor="let person of room.members" 
+          [hidden]="person === activePerson"
+        >
+          <input name="billPayers" type="checkbox" (change)="togglePerson(person)">
+          <p> {{ person.name }} </p>
+        </label>
+      </div>
+    </form>
   </div>
 </div>

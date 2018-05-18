@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Room } from '../shared/Room';
 import { Person } from '../shared/Person';
-import { RoomsService } from '../rooms.service';
+import { RoomService } from '../room.service';
 
 @Component({
   selector: 'app-person-form',
@@ -13,24 +13,24 @@ export class PersonFormComponent implements OnInit {
   activeRoom: Room;
   nameUnique: Boolean;
 
-  constructor(private roomsService: RoomsService) { 
+  constructor(private roomService: RoomService) { 
     this.newPersonName = '';
     this.activeRoom = null;
     this.nameUnique = true;
 
-    roomsService.activeRoomChange.subscribe(activeRoom => {
+    /*roomsService.activeRoomChange.subscribe(activeRoom => {
       this.activeRoom = activeRoom;
-    }) 
+    }) */
   }
 
   ngOnInit() {
-    this.activeRoom = this.roomsService.getActive();
+    //this.activeRoom = this.roomsService.getActive();
   }
 
   isNameUnique(name) {
     let unique = true;
 
-    this.activeRoom.members.forEach(member => {
+    this.roomService.getMembers().forEach(member => {
       if (member.name == name) {
         unique = false;
       }
@@ -41,11 +41,12 @@ export class PersonFormComponent implements OnInit {
 
   addNewPerson(event) {
     event.preventDefault();
+    console.log("add new member", this.newPersonName);
 
     if (this.isNameUnique(this.newPersonName)) {
       this.nameUnique = true;
-      this.roomsService.addPerson(new Person(this.newPersonName));
-      event.currentTarget.reset();
+
+      this.roomService.addMember(new Person(this.newPersonName));
     } else {
       this.nameUnique = false;
     }

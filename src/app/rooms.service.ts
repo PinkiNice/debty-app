@@ -11,11 +11,17 @@ import { Injectable } from '@angular/core';
 })
 export class RoomsService {
   rooms: Room[] = data.rooms;
-  active: Room = this.rooms[0] || null;
+  active: Room = null;
   activeRoomChange: Subject<Room> = new Subject<Room>();
   roomsChange: Subject<Room[]> = new Subject<Room[]>();
 
-  constructor() { }
+  constructor() {
+    console.log('constructor is called');
+    console.log(this.rooms);
+    if (this.rooms.length !== 0) {
+      this.setActive(this.rooms[0].name);
+    }
+  }
 
   getRooms(): Room[] {
     return this.rooms;
@@ -30,17 +36,9 @@ export class RoomsService {
     this.roomsChange.next(this.rooms);
   }
 
-  addPerson(person: Person) {
-    if (!this.active) {
-      throw new Error("can't add person because room is " + this.active);
-    }
-    
-    this.active.members.push(person);
-  }
-
   setActive(roomName) {
     const room = this.rooms.find(room => room.name == roomName);
-    
+    console.log('setting to active', roomName);
     if (room) {
       this.active = room;
       this.activeRoomChange.next(room);

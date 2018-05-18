@@ -1,10 +1,10 @@
 <div class="room" *ngIf="room">
   
   <div class="room__members">
-    <app-persons-list [persons]="room.members"></app-persons-list>
+    <app-persons-list [persons]="room.members" (activePersonChange)="onActivePersonChange($event)"></app-persons-list>
   </div>
 
-  <div class="room__body">
+  <div class="room__body" *ngIf="!!activePerson">
     <app-loans-list [activePerson]="activePerson" [room]="room"></app-loans-list>
     <app-bills-list [activePerson]="activePerson" [room]="room"></app-bills-list>
   </div>

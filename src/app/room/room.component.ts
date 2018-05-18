@@ -1,8 +1,9 @@
+import { Component, OnInit } from '@angular/core';
+
+import { RoomsService } from '../rooms.service';
+
 import { Room } from '../shared/Room';
 import { Person } from '../shared/Person';
-
-import { Component, OnInit } from '@angular/core';
-import { RoomsService } from '../rooms.service';
 
 @Component({
   selector: 'app-room',
@@ -28,5 +29,9 @@ export class RoomComponent implements OnInit {
       this.activePerson = this.room.members[0];
     }
     
+  }
+
+  onActivePersonChange(person) {
+    this.activePerson = person;
   }
 }

@@ -6,7 +6,14 @@
   </ul>
   <div class="rooms-list__form">
     <form #newRoomForm="ngForm" (ngSubmit)="addRoom(newRoomForm.value.roomName); newRoomForm.reset()">
-      <input type="text" required placeholder="New room" name="roomName" [(ngModel)]="newRoomName" #roomName="ngModel">
+      <input 
+        type="text" 
+        required 
+        laceholder="New room"
+        name="roomName"
+        [(ngModel)]="newRoomName"
+        #roomName="ngModel"
+      >
       <button [disabled]="!newRoomForm.valid" type="submit">+</button>
     </form>
   </div>

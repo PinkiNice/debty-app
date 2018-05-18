@@ -35,9 +35,9 @@ export class RoomsListComponent implements OnInit {
   }
 
   addRoom(name) {
-    console.log(name);
     const room = new Room(name);
     this.roomsService.addRoom(room);
     this.roomsService.setActive(room.name);
   }
+
 }

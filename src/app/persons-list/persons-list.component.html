@@ -1,6 +1,6 @@
 <div class="persons-list">
     <ul class="persons-list__list">
-      <li *ngFor="let person of persons">
+      <li *ngFor="let person of persons" (click)="setActive(person)">
         {{ person.name }}
       </li>
     </ul>
