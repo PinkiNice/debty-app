@@ -1,5 +1,5 @@
 export class Person {
   constructor (
-    public name: String,
+    public name: string,
     ) {}
 }

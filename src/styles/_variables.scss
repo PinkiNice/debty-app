@@ -1,0 +1,63 @@
+//Dark
+$color-primary: #404b69;
+$color-secondary: #283149;
+$color-brand: #f73859;
+$color-complimentary: #f3ecc8;
+
+//Dark revision
+$color-primary: #283149;
+$color-secondary: #404b69;
+$color-brand: #f73859;
+$color-complimentary: #dbedf3;
+
+// Matrix mint
+$color-primary: #323643;
+$color-secondary: #606470;
+$color-brand: #93deff;
+$color-complimentary: #f7f7f7;
+
+//Purple
+$color-primary: #1c1124;
+$color-secondary: #693e52;
+$color-brand: #74b49b;
+$color-complimentary: #a7d7c5;
+
+//Neon Star
+$color-primary: #240041;
+$color-secondary: #900048;
+$color-brand: #ff4057;
+$color-complimentary: #ff8260;
+
+//Night Carrot
+$color-primary: #083358;
+$color-secondary: #0f4471;
+$color-brand: #fc3c3c;
+$color-complimentary: #f6f6f6;
+
+
+$sans-serif: 'Roboto', sans-serif;
+$serif: 'Roboto Slab', serif;
+.serif {
+  font-family: $serif;
+}
+.sans-serif {
+  font-family: $sans-serif;
+}
+
+@mixin abs-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin abs-center-top {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.panel {
+  background-color: $color-primary;
+  padding: 1em 0.75em;
+}

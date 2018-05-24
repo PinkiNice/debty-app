@@ -1,0 +1,15 @@
+@import "~src/styles/_variables.scss";
+
+:host {
+  color: $color-complimentary;
+  outline: 1px solid $color-secondary;
+  
+  .bills-list__bill {
+    margin: 0.5em 0;
+  }
+
+  .bills-list__bills-container {
+    border-bottom: 1px solid $color-secondary;
+    margin-bottom: 2em;
+  }
+}

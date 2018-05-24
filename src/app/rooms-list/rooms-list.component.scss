@@ -1,16 +1,17 @@
-.rooms-list {
-  outline: 1px solid black;
-  & li {
+@import "~src/styles/_variables.scss";
+
+:host {
+  li, form {
     display: block;
-    background-color: gray;
-    padding: 0.25em;
-    margin: 0.15em;
-    &:hover {
-      background-color: lighten(gray, 10);
-    }
+    font-size: 1em;
   }
 
-  .room__active {
-    color: red;
+  .rooms-list__form {
+    display: flex;
+
+    input {
+      padding-left: 2em;
+    }
+    
   }
 }

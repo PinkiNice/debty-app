@@ -1,17 +1,58 @@
-.bill-form {
-  &__persons {
+@import "~src/styles/_variables.scss";
+:host {
+  .bill-form__persons {
     display: flex;
+    flex-wrap: wrap;
   }
-}
 
-.person-checkbox {
-  display: flex;
-  padding: 0.25em;
+  .bill-form__form {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    //flex-direction: column;
+  }
 
-  input[type="checkbox"] {
-    display: none;
-    &:checked + p {
-      background-color: blue;
+  .bill-form__inputs {
+    flex-grow: 1;
+  }
+
+  .bill-form__inline {
+    flex-grow: 1;
+    width: 100%;
+
+    & > * {
+      display: inline;
     }
   }
+
+  .bill-form__persons {
+    display: flex;
+    align-items: center;
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+    p {
+      margin-right: 1em;
+    }
+  }
+
+  input {
+    border-bottom: 1px solid $color-secondary;
+    margin: 0 0.5em;
+  }
+
+  input[type="number"] {
+    width: 5em;
+    text-align: center;
+  }
+
+  .person-checkbox {
+    input[type="checkbox"] {
+      display: none;
+    }
+  }
+
+  .button-simple {
+    margin: 0 2em;
+  }
 }
+

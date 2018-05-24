@@ -1,14 +1,23 @@
-.persons-list {
-  border: 1px solid black;
+@import "~src/styles/_variables.scss";
+
+:host {
   display: flex;
+  align-items: center;
+  outline: 1px solid $color-secondary;
+  //background-color: $brand-color;
+
   ul {
     display: flex;
-    list-style-type: none;
   }
+
+
   li {
+
     display: inline-block;
     margin: 0.5em;
-    background: red;
+    &.active {
+      background: red;
+    }
   }
   &__list {
 

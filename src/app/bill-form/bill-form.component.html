@@ -1,17 +1,42 @@
-<div class="bill-form">
-  <div class="bills-list__add">
-    <form>
-      <input type="text" name="billDescription" placeholder="what you payed for?">
-      <input type="number" name="billTotal" placeholder="total">
-      <div class="bill-form__persons">
-        <label class="person-checkbox" 
-          *ngFor="let person of room.members" 
-          [hidden]="person === activePerson"
+<form class="bill-form__form" (submit)="addBill($event)" #billForm="ngForm" ngNativeValidate>
+  <div class="bill-form__inputs">
+    <div class="bill-form__inline">
+      <p>{{store.activeRoom.activePerson.name}} купил</p>
+
+      <input required type="text" [(ngModel)]="billDescription" name="billDescription" placeholder="чипсы, сок и табак">
+      <p> за </p>
+      <input required type="number" min="1" [(ngModel)]="billTotal" name="billTotal" placeholder="total">
+      <p> руб. </p>
+    </div>
+    <div class="bill-form__persons">
+      <p> для </p>
+      <label class="selectable person-checkbox"
+        [ngClass]="{ selectable__active: isAllSelected()}"
+      >
+        <input 
+          [checked]="isAllSelected()" 
+          name="checkAll" 
+          type="checkbox"
+          (click)="toggleAll()"
         >
-          <input name="billPayers" type="checkbox" (change)="togglePerson(person)">
-          <p> {{ person.name }} </p>
+        <span>Все</span>
+      </label>
+      <ng-container
+        *ngFor="let person of store.activeRoom.members"
+      >
+        <label class="selectable person-checkbox" 
+          [ngClass]="{ selectable__active: selected[person.name]}"
+        >
+          <input 
+            [(ngModel)]="selected[person.name]" 
+            name="billPayers"
+            type="checkbox"
+          >
+          <span> {{ person.name }} </span>
         </label>
-      </div>
-    </form>
+      </ng-container>
+    </div>
   </div>
-</div>
+
+  <button class="button-simple sans-serif" [disabled]="selectedCount == 0 || !billForm.valid" type="submit">Добавить</button>
+</form>

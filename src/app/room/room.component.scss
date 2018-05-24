@@ -1,10 +1,13 @@
-.room {
+:host {
   justify-content: center;
 
-  &__body {
+  .room__body {
     display: flex;
     flex-direction: column;
-    
+    flex-grow: 1;
+    & > * {
+      flex-grow: 1;      
+    }
   }
 
 }

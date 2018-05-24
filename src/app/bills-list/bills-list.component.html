@@ -1,4 +1,4 @@
-<div class="bills-list">
-  <p>There will be history of billd</p>
-  <app-bill-form [room]="room" [activePerson]="activePerson"></app-bill-form>
+<div class="bills-list__bills-container">
+  <div class="bill bills-list__bill" *ngFor="let bill of store.activeRoom.bills" [bill]="bill" (billDeletion)="deleteBill(bill)"></div>
 </div>
+<div class="bill-form"></div>

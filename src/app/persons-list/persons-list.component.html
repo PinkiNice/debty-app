@@ -1,8 +1,6 @@
-<div class="persons-list">
-    <ul class="persons-list__list">
-      <li *ngFor="let person of persons" (click)="setActive(person)">
-        {{ person.name }}
-      </li>
-    </ul>
-    <app-person-form></app-person-form>
-</div>
+<ul class="persons-list__list">
+  <li class="selectable" *ngFor="let person of store.activeRoom.members" [ngClass]="{ selectable__active: person == store.activeRoom.activePerson }" (click)="setActive(person)">
+    {{ person.name }}
+  </li>
+  <div class="person-form"></div>
+</ul>

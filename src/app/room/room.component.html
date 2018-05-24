@@ -1,11 +1,6 @@
-<div class="room" *ngIf="room">
-  
-  <div class="room__members">
-    <app-persons-list [persons]="room.members" (activePersonChange)="onActivePersonChange($event)"></app-persons-list>
-  </div>
+<div class="persons-list panel" *ngIf="store.activeRoom"></div> 
 
-  <div class="room__body" *ngIf="!!activePerson">
-    <app-loans-list [activePerson]="activePerson" [room]="room"></app-loans-list>
-    <app-bills-list [activePerson]="activePerson" [room]="room"></app-bills-list>
-  </div>
+<div class="room__body" *ngIf="store.activeRoom.activePerson">
+  <div class="loans-list panel"></div>
+  <div class="bills-list panel"></div>
 </div>

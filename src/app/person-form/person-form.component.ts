@@ -1,36 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 import { Room } from '../shared/Room';
 import { Person } from '../shared/Person';
-import { RoomService } from '../room.service';
+import { Store } from '../store/Store';
 
 @Component({
-  selector: 'app-person-form',
+  selector: '.person-form',
   templateUrl: './person-form.component.html',
-  styleUrls: ['./person-form.component.css']
+  styleUrls: ['./person-form.component.scss']
 })
 export class PersonFormComponent implements OnInit {
-  newPersonName: String;
-  activeRoom: Room;
-  nameUnique: Boolean;
+  newPersonName: string;
+  nameUnique: boolean;
 
-  constructor(private roomService: RoomService) { 
+  constructor(private store: Store) { 
     this.newPersonName = '';
-    this.activeRoom = null;
     this.nameUnique = true;
-
-    /*roomsService.activeRoomChange.subscribe(activeRoom => {
-      this.activeRoom = activeRoom;
-    }) */
   }
 
   ngOnInit() {
-    //this.activeRoom = this.roomsService.getActive();
   }
 
   isNameUnique(name) {
     let unique = true;
 
-    this.roomService.getMembers().forEach(member => {
+    this.store.activeRoom.members.forEach(member => {
       if (member.name == name) {
         unique = false;
       }
@@ -41,12 +34,12 @@ export class PersonFormComponent implements OnInit {
 
   addNewPerson(event) {
     event.preventDefault();
-    console.log("add new member", this.newPersonName);
 
     if (this.isNameUnique(this.newPersonName)) {
       this.nameUnique = true;
-
-      this.roomService.addMember(new Person(this.newPersonName));
+      this.store.activeRoom.addMember(new Person(this.newPersonName));
+      event.currentTarget.reset();
+      
     } else {
       this.nameUnique = false;
     }

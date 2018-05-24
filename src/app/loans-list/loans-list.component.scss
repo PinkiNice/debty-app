@@ -1,8 +1,31 @@
-.loans-list {
+@import "~src/styles/_variables.scss";
+
+:host {
   display: flex;
+  min-height: 10em;
+  outline: 1px solid $color-secondary;
+  color: $color-complimentary;
+  
+  h4 {
+    color: $color-brand;
+    margin: 0;
+  }
 
   & > * {
     flex-basis: 50%;
   }
-  
+
+  .loans-list__pay {
+    border-right: 1px solid $color-secondary;
+  }
+
+  .loans-list__get-paid {
+    padding-left: 1em;
+  }
+
+  .loans-list__pay, .loans-list__get-paid {
+    flex-basis: 50%;
+    flex-shrink: 0;
+    padding: 0.75em 1em;
+  }
 }
